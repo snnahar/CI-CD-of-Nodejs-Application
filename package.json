@@ -1,0 +1,14 @@
+{
+    "name": "cicdofnodejsapplication",
+    "version": "1.0.0",
+    "description": "To show how ci/cd of nodejs application and push to ecr",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/snnahar/CI-CD-of-Nodejs-Application.git"
+    },
+    "author": "Shamsun Nahar",
+    "dependencies": {
+      "express": "^4.17.1"
+    }
+  }
