@@ -1,6 +1,6 @@
 FROM node:14
 
-WORKDIR /cicd-project
+WORKDIR /CI-CD-of-Nodejs-Application
 COPY package*.json ./
 
 RUN npm install
