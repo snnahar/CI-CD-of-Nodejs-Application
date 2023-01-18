@@ -1,6 +1,6 @@
 FROM node:14
 
-WORKDIR /CI-CD-of-Nodejs-Application
+ADD index.js .
 COPY package*.json ./
 
 RUN npm install
