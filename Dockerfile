@@ -1,9 +1,9 @@
-FROM node:14
+FROM node:slim
 
-ADD index.js .
+WORKDIR /nodejs 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install express
 
 COPY . .
 

@@ -9,8 +9,12 @@ pipeline {
     }
    
     stages {
-        
-         stage('Logging into AWS ECR') {
+        stage('Cloning Git') {
+            steps {
+                sh "git clone 'https://github.com/snnahar/CI-CD-of-Nodejs-Application.git'"     
+            }
+        }
+        stage('Logging into AWS ECR') {
             steps {
                 script {
                 sh "aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
@@ -18,18 +22,12 @@ pipeline {
                  
             }
         }
-        
-        stage('Cloning Git') {
-            steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/sd031/aws_codebuild_codedeploy_nodeJs_demo.git']]])     
-            }
-        }
   
     // Building Docker images
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+          sh "docker build -t ${IMAGE_REPO_NAME} ."
         }
       }
     }

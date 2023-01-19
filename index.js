@@ -1,8 +1,7 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000 ;
-const config = require('config')
-console.log(config);
+const port = 3000
+
 
 app.get('/', (req, res) => {
   res.send('CICD App V2!')
